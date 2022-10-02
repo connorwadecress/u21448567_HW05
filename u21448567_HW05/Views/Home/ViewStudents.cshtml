@@ -1,0 +1,141 @@
+﻿@model IEnumerable<u21448567_HW05.Models.Students>
+
+@{
+    ViewBag.Title = "ViewStudents";
+}
+
+<br />
+<br />
+
+<h2>Students</h2>
+
+<hr />
+
+@using (Html.BeginForm("searchStudents", "Home", FormMethod.Post))
+{
+    <form>
+        <div class="form-row">
+            <div class="col">
+                <input type="text" name="studentName" class="form-control" placeholder="Search Student Name">
+            </div>
+            <div class="col">
+                <select id="dropType" class="form-control">
+                    <option value="" selected disabled>Select a class</option>
+                    @foreach (var item in Model)
+                    {
+                        <option>@Html.DisplayFor(modelItem => item.stdClass)</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                @*<input type="submit" name="Search" value="submit" />*@
+                <button type="submit" class="btn btn-success btn-block" name="Search">Search</button>
+
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-danger btn-block" name="Search">Clear</button>
+            </div>
+        </div>
+    </form>
+}
+
+<hr />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Surname
+            </th>
+            <th>
+                Class
+            </th>
+            <th>
+                Points
+            </th>
+            <th>
+                Borrow Book
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.studentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stdClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.point)
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-primary btn-block">Borrow Book</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Surname
+            </th>
+            <th>
+                Class
+            </th>
+            <th>
+                Points
+            </th>
+            <th>
+                Borrow Book
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.studentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stdClass)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.point)
+                </td>
+                <td>
+
+                </td>
+            </tr>
+        }
+
+    </table>*@

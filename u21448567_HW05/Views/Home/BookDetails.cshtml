@@ -1,0 +1,104 @@
+﻿@model IEnumerable<u21448567_HW05.Models.Borrows>
+
+@{
+    ViewBag.Title = "BookDetails";
+}
+
+<br />
+<br />
+
+@foreach (var item in Model)
+{
+    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+
+}
+
+<hr />
+
+<div class="d-flex">
+    <div class="mr-auto p-1">
+        <h3># Borrows - ##</h3>
+    </div>
+    <div class="p-1">
+        @Html.ActionLink("View Students", "ViewStudents",new { @class = "btn btn-primary" })
+    </div>
+</div>
+
+<hr />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Taken Date
+            </th>
+            <th>
+                Brought Date
+            </th>
+            <th>
+                Borrowed By
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.borrowId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.takenDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.broughtDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.borrowedBy)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.borrowId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.takenDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.broughtDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.studentId)
+            </th>
+
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.borrowId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.takenDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.broughtDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.studentId)
+            </td>
+
+        </tr>
+    }
+
+    </table>*@

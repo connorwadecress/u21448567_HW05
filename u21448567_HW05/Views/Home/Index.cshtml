@@ -1,0 +1,113 @@
+﻿@model IEnumerable<u21448567_HW05.Models.Books>
+
+@{
+    ViewBag.Title = "Books";
+}
+
+<br />
+<br />
+
+<h2>Books</h2>
+
+<hr />
+
+@using (Html.BeginForm("searchBooks", "Home", FormMethod.Post))
+{
+    <form>
+        <div class="form-row">
+            <div class="col">
+                <input type="text" name="bookName" class="form-control" placeholder="Search Book Name">
+            </div>
+            <div class="col">
+                <select id="dropType" class="form-control" name="bookName">
+                    <option value="" selected disabled>Select a Type</option>
+                    @foreach (var item in Model)
+                    {
+                        <option>@Html.DisplayFor(modelItem => item.typeId)</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <select id="dropAuthor" class="form-control" name="bookName">
+                    <option value="" selected disabled>Select an Author</option>
+                    @foreach (var item in Model)
+                    {
+                        <option>@Html.DisplayFor(modelItem => item.authorId)</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                @*<input type="submit" name="Search" value="submit" />*@
+                <button type="submit" class="btn btn-success btn-block" name="Search">Search</button>
+
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-danger btn-block" name="Clear">Clear</button>
+            </div>
+        </div>
+    </form>
+}
+
+<hr />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Page Count
+            </th>
+            <th>
+                Points
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var books in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => books.bookId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => books.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => books.authorId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => books.typeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => books.pagecount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => books.point)
+                </td>
+                <td>
+                    N/A
+                </td>
+                <td>
+                    @Html.ActionLink("View", "BookDetails", new { id = books.bookId }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
